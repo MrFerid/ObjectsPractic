@@ -203,7 +203,7 @@ function saveTeacher(event){
 
     let teacher = new Teacher(teacherID,name,surname,email);
     
-    // getting only selected options between all options
+    // getting only selected options between all options and find this group in academy groups than add to teachers
     for (let i=0; i<options.length; i++) {
         if (options[i].selected) {
             //
