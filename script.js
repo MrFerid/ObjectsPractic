@@ -230,7 +230,7 @@ function saveTeacher(event){
 
                         let group = myAcademy.teachers[i].groups[y];
                         
-                        li += '<li class="list-group-item ">'+ group.name + ' - ' + group.room.name +
+                        li += '<li class="list-group-item ">' + group.id + '. ' + group.room.name +
                                 '<div class="badge badge-info">' + group.room.capacity + '</div></li>';
                 }
         }
