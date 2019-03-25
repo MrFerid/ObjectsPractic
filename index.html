@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="script.js"></script>
+</head>
+<body onload="init()">
+
+    <header class="bg-dark py-2"> 
+        <div style="width: 900px;" class="container">
+            <nav class="bg-dark"> 
+                <a class=" text-light" href="#">Academy</a> 
+                <a class=" text-light" href="index.html">Home</a> 
+            </nav>
+        </div>
+    </header>
+    <main class="pb-3">
+        <div style="width: 900px;" class="container">
+            <div class="row statistic">
+                <div class="col-lg-12 text-center mt-4">
+                    <h1>Welcome To Code Academy</h1>
+                    <div class="alert alert-info " role="alert">
+                        Nizami kuc 203B, AF Business house 2-ci mertebe
+                    </div>
+                </div>
+                <div class="col-lg-12 pt-4">
+                    <h4>Information about Code Academy</h4>
+                </div>
+                <div class="col-3">
+                    Student Count <div class="badge badge-danger studentCount">0</div>
+                </div>
+                <div class="col-3">
+                    Teacher Count <div class="badge badge-danger teacherCount">0</div>
+                    </div>
+                <div class="col-3">
+                    Group Count <div class="badge badge-danger groupCount">0</div>
+                </div>
+                <div class="col-3">
+                    Room Count <div class="badge badge-danger roomCount">0</div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-6">
+                    <div class="student border border-info p-2"><!-- Student ------------------------------------------------- -->
+                        <h4 class="text-center">Student</h4>
+                        <ul class="list-group p-0 border-0">
+                            <li class="list-group-item pb-0 border-0  "> 
+                                <label for="name">Name</label> 
+                                <input type="text" id="name" class="form-control">
+                            </li>
+                            <li class="list-group-item py-0 border-0  "> 
+                                <label for="surname">Surname</label> 
+                                <input type="text" id="surname" class="form-control">
+                            </li>
+                            <li class="list-group-item py-0 border-0  "> 
+                                <label for="email">Email</label> 
+                                <input type="text" id="email" class="form-control">
+                            </li>
+                            <li class="list-group-item border-0  "><h4>Address</h4></li>
+                            <li class="list-group-item py-0 border-0  "> 
+                                <label for="street">Street</label> 
+                                <input type="text" id="street" class="form-control">
+                            </li>
+                            <li class="list-group-item py-0 border-0  "> 
+                                <label for="city">City</label> 
+                                <input type="text" id="city" class="form-control">
+                            </li>
+                            <li class="list-group-item py-0 border-0  "> 
+                                <label for="country">Country</label> 
+                                <input type="text" id="country" class="form-control">
+                            </li>
+                            <li class="list-group-item border-0   text-right">
+                                <a href="#" onclick="saveStudent(event)" id="1" class="btn btn-outline-info">Save</a>
+                            </li>
+                        </ul>
+
+                        <div class="text-center py-4"><h4> List of students</h4></div>
+
+                        <ul class="list-group list-style-number studentList">
+                            
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-6">
+                        <div class="room border border-info p-2"> <!-- Room ------------------------------------------------- -->
+                                <h4 class="text-center">Room</h4>
+                                <ul class="list-group p-0 border-0">
+                                    <li class="list-group-item pb-0 border-0  "> 
+                                        <label for="r-name">Name</label> 
+                                        <input type="text" id="r-name" class="form-control">
+                                    </li>
+                                    <li class="list-group-item py-0 border-0  "> 
+                                        <label for="capacity">Capacity</label> 
+                                        <input type="text" id="capacity" class="form-control">
+                                    </li>
+                                    <li class="list-group-item border-0   text-right">
+                                        <a href="#" class="btn btn-outline-info" onclick="saveRoom(event)">Save</a>
+                                    </li>
+                                </ul>
+        
+                                <div class="text-center py-4"><h4> List of students</h4></div>
+        
+                                <ul class="list-group list-style-number roomList">
+                                </ul>
+                        </div>
+
+                        <div class="group border mt-4 border-info p-2"> <!-- Group ------------------------------------------------- -->
+                            <h4 class="text-center">Group</h4>
+                            <ul class="list-group p-0 border-0">
+                                <li class="list-group-item pb-0 border-0  "> 
+                                    <label for="g-name">Name</label> 
+                                    <input type="text" id="g-name" class="form-control">
+                                </li>
+                                <li class="list-group-item py-0 border-0  "> 
+                                    <label for="g-room">Room</label> 
+                                    <select class="form-control" id="g-room">
+
+                                    </select>
+                                </li>
+                                <li class="list-group-item border-0   text-right">
+                                    <a href="#" onclick="saveGroup(event)" class="btn btn-outline-info">Save</a>
+                                </li>
+                            </ul>
+    
+                            <div class="text-center py-4"><h4> List of students</h4></div>
+    
+                            <ul class="list-group list-style-number gList">
+                            </ul>
+                         </div>
+
+                         <div class="teacher border border-info mt-4 p-2"> <!-- Teacher ------------------------------------------------- -->
+                            <h4 class="text-center ">Teacher</h4>
+                            <ul class="list-group p-0 border-0">
+                                <li class="list-group-item pb-0 border-0  "> 
+                                    <label for="t-name">Name</label> 
+                                    <input type="text" id="t-name" class="form-control">
+                                </li>
+                                <li class="list-group-item py-0 border-0  "> 
+                                    <label for="t-surname">Surname</label> 
+                                    <input type="text" id="t-surname" class="form-control">
+                                </li>
+                                <li class="list-group-item py-0 border-0  "> 
+                                    <label for="t-email">Email</label> 
+                                    <input type="text" id="t-email" class="form-control">
+                                </li>
+                                <li class="list-group-item py-0 border-0  "> 
+                                    <label for="t-groups">Groups</label> 
+                                    <select id="t-groups" multiple>
+                                    </select>
+                                </li>
+                                <li class="list-group-item border-0   text-right">
+                                    <a href="#" class="btn btn-outline-info" onclick="saveTeacher(event)">Save</a>
+                                </li>
+                            </ul>
+    
+                            <div class="text-center pt-4"><h4> List of Teachers</h4></div>
+                            <div class="teacherList">
+                                   
+                            </div>
+                                
+                         </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>
