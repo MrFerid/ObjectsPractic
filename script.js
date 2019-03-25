@@ -62,11 +62,6 @@ function Student(id,name,surname,email,address){
     }
 } 
 
-function Address(street,city,country){
-    this.street = street,
-    this.city = city,
-    this.country = country
-}
 
    // ---------------------------- Begin function runs on page load
 
@@ -136,7 +131,7 @@ function saveRoom(){
     let select = document.getElementById("g-room");
     let opt = "";
     for(let i=0; i<myAcademy.rooms.length; i++){
-        opt += '<option value="'+ roomID +'">';
+        opt += '<option value="'+ (i+1) +'">';
         opt += myAcademy.rooms[i].name;
         opt += '</option>'
     }
@@ -181,7 +176,7 @@ function saveGroup(){
          let select = document.getElementById('t-groups');
          let opt = "";
          for(let i=0; i<myAcademy.groups.length; i++){
-             opt += '<option value="'+ groupID +'">';
+             opt += '<option value="'+ (i+1) +'">';
              opt += myAcademy.groups[i].name;
              opt += '</option>'
          }
@@ -211,14 +206,20 @@ function saveTeacher(event){
     // getting only selected options between all options
     for (let i=0; i<options.length; i++) {
         if (options[i].selected) {
-            teacher.addGroup(options[i].value || options[i].text);
+            //
+            for(let y=0; y<myAcademy.groups.length; y++){
+                if(myAcademy.groups[y].id == options[i].value){
+                    teacher.addGroup(myAcademy.groups[y]);
+                }
+            }
         }
     }
+    console.log(teacher);
  
     myAcademy.addTeacher(teacher);
 
         let li = "";
-        for(let i=0; i<myAcademy.teachers.length; i++){
+        for(let i=0; i< myAcademy.teachers.length; i++){
 
             li += '<li class="list-group-item ">'+ myAcademy.teachers[i].id + '. ' + 
                                                    myAcademy.teachers[i].name  + ' ' + 
@@ -227,10 +228,10 @@ function saveTeacher(event){
 
                 for(let y =0; y < myAcademy.teachers[i].groups.length; y++){
 
-                        let gr = myAcademy.teachers[i].groups[y];
+                        let group = myAcademy.teachers[i].groups[y];
                         
-                        li += '<li class="list-group-item ">'+ myAcademy.teachers[i].groups[y] + ' - ' + myAcademy.groups[y].room.name +
-                                '<div class="badge badge-info">' + myAcademy.groups[y].room.capacity + '</div></li>';
+                        li += '<li class="list-group-item ">'+ group.name + ' - ' + group.room.name +
+                                '<div class="badge badge-info">' + group.room.capacity + '</div></li>';
                 }
         }
         
@@ -239,6 +240,9 @@ function saveTeacher(event){
         statistic();
         reset('teacher');
 }
+
+
+
 
 
 // -------------------- General counter function for header
@@ -253,8 +257,6 @@ function statistic(){
     teachers.innerHTML = myAcademy.teachers.length || 0;
     groups.innerHTML = myAcademy.groups.length || 0;
     rooms.innerHTML = myAcademy.rooms.length || 0;
-
-    console.log(myAcademy.teachers.length);
 }
 
 
